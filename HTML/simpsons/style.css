@@ -1,0 +1,75 @@
+/*presentation page web customisation, feuille de style*/
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(220, 136, 25);
+}
+
+header{
+    background-color: blue; /*entete en bleu*/
+}
+
+h1{
+    color:rgb(252, 251, 251);
+    text-align: center;
+}
+
+h2{
+    color: goldenrod /*titre h2 en bleu ciel*/
+}
+
+h3{
+    color:rgb(252, 251, 251); /*titre h1 en blanc*/
+}
+
+
+.pblanc{
+color: rgb(248, 248, 244); /*paragraphe en beige*/
+}
+
+nav{
+    background-color: blue;
+    width: 20%;
+    padding: 1em;
+    text-align: center;
+}
+
+aside{ 
+    background-color: blue;
+    width: 20%;
+    padding: 1em;
+}
+
+article{
+    
+    background-color: white; /*fond boite article en blanc*/
+    width: 60%;
+    padding: 2em;
+}
+
+footer{
+    background-color: darkblue;
+    text-align: center;
+}
+
+.wrapper {
+    width: 80%; 
+    margin:  auto;
+    }
+
+.main-img {
+    width: 100%;
+} 
+
+.box3 {width: 20%;} 
+
+.justify {text-align: justify;
+text-justify: inter-word;}
+
+main {
+    display: flex;
+  }

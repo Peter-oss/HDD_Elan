@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Web avec Main</title>
+</head>
+<body>
+    <header>
+        <h1>Bienvenue sur ma page web</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Accueil</h2>
+            <p>Ceci est la section d'accueil de la page.</p>
+        </section>
+        <section id="about">
+            <h2>À propos</h2>
+            <p>Voici quelques informations à propos de cette page.</p>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Vous pouvez nous contacter à l'adresse suivante : contact@example.com</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 Ma Page Web</p>
+    </footer>
+</body>
+</html>

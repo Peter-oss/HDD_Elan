@@ -1,0 +1,53 @@
+* {
+    margin: 0;              /*remise à zero de tous les éléments sur la page*/
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins"; /*voir google font*/
+}
+
+#container {
+    display: flex;          /*placement des elements cote à cote*/
+    min-height: 100vh;      /*video height VH, 100% hauteur page*/
+    background: rgba(68, 117, 136, 0.548); /*couleur fond écran de base*/
+    justify-content: center; /*centrer sur la largeur*/
+    align-items: center; /*centrer dans le sens de la hauteur*/
+    gap: 20px; /*espace entre les box dans le sens de la largeur*/
+}
+
+.card {
+    background: #fff;       /*fond écran carte*/
+    width: 300px;               /*largeur de la carte*/
+    border-radius: 10px;        /*arrondi angles carte*/
+    border: 1px solid black;    /*bordure carte*/
+}
+
+.card-header {
+    height: 200px; /*hauteur entete de carte*/
+}
+
+.card-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*remplit la totalité de la taille de la box*/
+    filter: grayscale(1); /*modifie coloration image en echelle de gris*/
+    transition: 2s; /*temsp alloué pour modifier couleur image quand on passe la souris dessus (voir commande suivante)*/
+    border-radius: 10px 10px 0 0; /*Arrondi angles, Top left, Top right, dans le sens des aiguilles d'une montre sur les images elles-memes*/
+}
+
+.card-header img:hover {
+    filter: grayscale(0); /*modifie couleur image quand on passe la souris dessus*/
+}
+
+.card-text{
+    padding: 30px;
+}
+
+.card-text h1 {
+    font-size: 25px; /*On veut agir sur le texte du titre h1*/
+    margin-bottom: 10px; /*marge de 10px en dessous du titre*/
+}
+
+.card-text p {
+    font-size: 14px; /*taille caracteres des cartes*/
+    color:rgb(147, 147, 147); /*coloration texte*/
+}
