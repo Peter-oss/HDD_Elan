@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Hôte:                         127.0.0.1
--- Version du serveur:           8.0.39 - MySQL Community Server - GPL
+-- Version du serveur:           8.0.30 - MySQL Community Server - GPL
 -- SE du serveur:                Win64
--- HeidiSQL Version:             12.8.0.6933
+-- HeidiSQL Version:             12.1.0.6537
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `cuisiner` (
   CONSTRAINT `FK_cuisiner_recette` FOREIGN KEY (`id_recette`) REFERENCES `recette` (`id_recette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.cuisiner : ~39 rows (environ)
+-- Listage des données de la table recettes.cuisiner : ~50 rows (environ)
 INSERT INTO `cuisiner` (`id_recette`, `id_ingredient`, `quantité`) VALUES
 	(1, 2, 2),
 	(5, 23, 2),
@@ -83,7 +83,18 @@ INSERT INTO `cuisiner` (`id_recette`, `id_ingredient`, `quantité`) VALUES
 	(7, 6, 2),
 	(7, 37, 1),
 	(7, 38, 1),
-	(7, 8, 3);
+	(7, 8, 3),
+	(8, 9, 5),
+	(8, 42, 1),
+	(8, 10, 3),
+	(8, 3, 6),
+	(8, 6, 2),
+	(8, 39, 2),
+	(8, 40, 6),
+	(8, 31, 3),
+	(8, 41, 1),
+	(8, 32, 1),
+	(5, 40, 20);
 
 -- Listage de la structure de table recettes. ingredient
 CREATE TABLE IF NOT EXISTS `ingredient` (
@@ -93,9 +104,9 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
   `cout_ingredient` decimal(15,2) NOT NULL DEFAULT (0),
   `uniteMesure` varchar(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_ingredient`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.ingredient : ~39 rows (environ)
+-- Listage des données de la table recettes.ingredient : ~42 rows (environ)
 INSERT INTO `ingredient` (`id_ingredient`, `nom_ingredient`, `descrption`, `cout_ingredient`, `uniteMesure`) VALUES
 	(1, 'Pavé de saumon', 'La pièce', 1.98, 'La pièce'),
 	(2, 'Avocat', 'La pièce', 4.65, 'La pièce'),
@@ -108,7 +119,7 @@ INSERT INTO `ingredient` (`id_ingredient`, `nom_ingredient`, `descrption`, `cout
 	(9, 'Tomate', 'La pièce', 0.10, 'La pièce'),
 	(10, 'Oignon', 'La pièce', 0.20, 'La pièce'),
 	(11, 'Bouquet de persil', 'La pièce', 1.00, 'La pièce'),
-	(12, 'Beurre', 'Beurre le gramme', 0.02, 'Le gramme'),
+	(12, 'Beurre', 'Beurre le gramme', 0.50, 'Le gramme'),
 	(13, 'Confiture de lait', 'Le pot', 4.80, 'Le pot'),
 	(14, 'Crème chantilly', 'En bombe', 0.01, 'millilitre'),
 	(15, 'Biscuit Speculoos', 'Le biscuit', 0.07, 'La pièce'),
@@ -128,14 +139,17 @@ INSERT INTO `ingredient` (`id_ingredient`, `nom_ingredient`, `descrption`, `cout
 	(29, 'Os à moelle', 'La pièce', 0.64, 'La pièce'),
 	(30, 'Celeri en branche', 'La branche', 0.70, 'La branche'),
 	(31, 'Ail gousse', 'La gousse', 1.53, 'La gousse'),
-	(32, 'Bouquet garni pot au feu', 'La pièce', 0.98, 'La pièce'),
+	(32, 'Bouquet garni', 'La pièce', 0.98, 'La pièce'),
 	(33, 'Laitue', 'Pièce', 1.49, 'La pièce'),
 	(34, 'Salade', 'La pièce', 0.01, 'La pièce'),
 	(35, 'Vinaigrette prete', 'La cueilller', 0.02, 'cueiller'),
 	(36, 'Lardons 250g', 'Le paquet', 2.19, 'Le paquet'),
 	(37, 'Creme fraiche 50 cl', 'le pot', 1.99, 'Le pot'),
 	(38, 'Pates spaguettis 500 g', 'Le paquet', 2.98, 'Le paquet'),
-	(39, 'Poivre moulu', 'Poivre moulu', 2.50, 'cueiller');
+	(39, 'Poivre moulu', 'Poivre moulu', 2.50, 'cueiller'),
+	(40, 'Poulet', '100grammes', 1.28, 'par100g'),
+	(41, 'Vin pelure oignon', '75cl', 1.62, 'Bouteille'),
+	(42, 'Poivron mélange', '500gr', 2.49, '500gr');
 
 -- Listage de la structure de table recettes. recette
 CREATE TABLE IF NOT EXISTS `recette` (
@@ -147,16 +161,17 @@ CREATE TABLE IF NOT EXISTS `recette` (
   PRIMARY KEY (`id_recette`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `FK_recette_categorie` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.recette : ~6 rows (environ)
+-- Listage des données de la table recettes.recette : ~7 rows (environ)
 INSERT INTO `recette` (`id_recette`, `id_categorie`, `nom_recette`, `description`, `tempsPreparationMns`) VALUES
-	(1, 5, 'Tartare d\'avocat et saumon', 'Coupez les avocats en deux, retirez le noyau et détaillez la chair en dés. Arrosez avec 1 cuillère à soupe de jus de citron, salez, poivrez et mélangez.', 15),
-	(3, 6, 'Verrine à la confiture de lait de vache', 'Détendez la confiture de lait à la fourchette et incorporez délicatement les 2 tiers de la chantilly.', 15),
-	(4, 5, 'Cigares au fromage et graines de pavot', 'Dans un bol, mélangez le fromage frais avec l’emmental râpé, l’œuf et un peu de poivre.', 15),
-	(5, 5, 'Pot au feu base viande', 'https://www.marmiton.org/recettes/recette_pot-au-feu_32792.aspx', 270),
-	(6, 4, 'Salade verte', 'Salade verte abev assaisonnemnt tout pret', 10),
-	(7, 5, 'Pâtes à la "carbonara" à la française', 'https://www.marmiton.org/recettes/recette_pates-a-la-carbonara_80453.aspx', 20);
+	(1, 5, 'Tartare d\'avocat et saumon', 'Coupez les avocats en deux, retirez le noyau et détaillez la chair en dés. Arrosez avec 1 cuillère à soupe de jus de citron, salez, poivrez et mélangez.', 10),
+	(3, 6, 'Verrine à la confiture de lait de vache', 'Détendez la confiture de lait à la fourchette et incorporez délicatement les 2 tiers de la chantilly.', 10),
+	(4, 5, 'Cigares au fromage et graines de pavot', 'Dans un bol, mélangez le fromage frais avec l’emmental râpé, l’œuf et un peu de poivre.', 10),
+	(5, 5, 'Pot au feu base viande', 'https://www.marmiton.org/recettes/recette_pot-au-feu_32792.aspx', 265),
+	(6, 4, 'Salade verte', 'Salade verte abev assaisonnemnt tout pret', 5),
+	(7, 5, 'Pâtes à la "carbonara" à la française', 'https://www.marmiton.org/recettes/recette_pates-a-la-carbonara_80453.aspx', 15),
+	(8, 5, 'Poulet basquaise', 'https://www.bing.com/images/search?view=detailv2&FORM=recidp&q=poulet+basquaise&imgurl=https://bing.com/th?id=OSK.80945104e0af80369a7afbb40a1ae320&idpbck=1&sim=4&pageurl=fbccd45125bff8433dea7cbff6ff129a&idpp=recipe&filters=recipequerylanguage:%22fr%22%20catesegtype:%22recipe%22%20cack:%22f50a7344-acf3-45bd-9700-0d60fd15f92f%22%20subsegment:%22recipe%22%20segment:%22generic.carousel%22%20secq:%22poulet%20basquaise%22%20supwlcar:%221%22%20tsource:%22EntitySegments%22%20ctype:%220%22%20eltypedim1:%22Recipe%22%20mltype:%220%22&selectedindex=0&ajaxhist=0&ajaxserp=0', 75);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
