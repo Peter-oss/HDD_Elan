@@ -12,8 +12,4 @@ JOIN
 WHERE 
     recette.nom_recette = 'Pâtes à la "carbonara" à la française';
 
-#Insérer une nouvelle recette : « Pâtes à la carbonara » dont la durée de réalisation est de 20 min avec 
-#les instructions de votre choix. Pensez à alimenter votre base de données en conséquence afin de 
-#pouvoir lister les détails de cette recettes (ingrédients)
-
-#La présentation n'est pas géniale mais ça marche
+#Afficher le détail de la recette n°5 (liste des ingrédients, quantités et prix)
