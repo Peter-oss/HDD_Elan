@@ -1,16 +1,4 @@
-#Afficher le nombre de recettes par catégories : 4 entrées, 5 plats, 6 desserts
-#Categories de disponibles :
-#4-Entree
-#5-Plat
-#6-Dessert
-
-/*
-SELECT recette.id_recette, recette.nom_recette, recette.tempsPreparationMns, COUNT(cuisiner.id_recette) AS nbIngredientsingredient
-FROM recette
-INNER JOIN cuisiner ON recette.id_recette = cuisiner.id_recette
-GROUP BY recette.id_recette
-ORDER BY tempsPreparationMns DESC;
-*/
+#Afficher le nombre de recettes par catégories : X entrées, Y plats, Z desserts
 
 SELECT  categorie.id_categorie
     ,   categorie.type_categorie
