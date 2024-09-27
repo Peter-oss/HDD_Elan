@@ -4,3 +4,4 @@ GROUP BY ingredient.id_ingredient
 HAVING recette_count >= 3;
 
 #mysql Trouver les ingrédients qui sont utilisés dans au moins 3 recettes
+#Requete à prendre avec des pincettes
