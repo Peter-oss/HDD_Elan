@@ -24,13 +24,14 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id_categorie` int NOT NULL AUTO_INCREMENT,
   `type_categorie` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.categorie : ~3 rows (environ)
+-- Listage des données de la table recettes.categorie : ~4 rows (environ)
 INSERT INTO `categorie` (`id_categorie`, `type_categorie`) VALUES
 	(4, 'Entree'),
 	(5, 'Plat'),
-	(6, 'Dessert');
+	(6, 'Dessert'),
+	(7, 'Boisson');
 
 -- Listage de la structure de table recettes. cuisiner
 CREATE TABLE IF NOT EXISTS `cuisiner` (
@@ -43,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `cuisiner` (
   CONSTRAINT `FK_cuisiner_recette` FOREIGN KEY (`id_recette`) REFERENCES `recette` (`id_recette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.cuisiner : ~50 rows (environ)
+-- Listage des données de la table recettes.cuisiner : ~51 rows (environ)
 INSERT INTO `cuisiner` (`id_recette`, `id_ingredient`, `quantité`) VALUES
 	(1, 2, 2),
 	(5, 23, 2),
@@ -94,7 +95,8 @@ INSERT INTO `cuisiner` (`id_recette`, `id_ingredient`, `quantité`) VALUES
 	(8, 31, 3),
 	(8, 41, 1),
 	(8, 32, 1),
-	(5, 40, 20);
+	(5, 40, 20),
+	(1, 44, 3);
 
 -- Listage de la structure de table recettes. ingredient
 CREATE TABLE IF NOT EXISTS `ingredient` (
@@ -104,9 +106,9 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
   `cout_ingredient` decimal(15,2) NOT NULL DEFAULT (0),
   `uniteMesure` varchar(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_ingredient`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.ingredient : ~42 rows (environ)
+-- Listage des données de la table recettes.ingredient : ~45 rows (environ)
 INSERT INTO `ingredient` (`id_ingredient`, `nom_ingredient`, `descrption`, `cout_ingredient`, `uniteMesure`) VALUES
 	(1, 'Pavé de saumon', 'La pièce', 1.98, 'La pièce'),
 	(2, 'Avocat', 'La pièce', 4.65, 'La pièce'),
@@ -149,7 +151,10 @@ INSERT INTO `ingredient` (`id_ingredient`, `nom_ingredient`, `descrption`, `cout
 	(39, 'Poivre moulu', 'Poivre moulu', 2.50, 'cueiller'),
 	(40, 'Poulet', '100grammes', 1.28, 'par100g'),
 	(41, 'Vin pelure oignon', '75cl', 1.62, 'Bouteille'),
-	(42, 'Poivron mélange', '500gr', 2.49, '500gr');
+	(42, 'Poivron mélange', '500gr', 2.49, '500gr'),
+	(43, 'Tomate de luxe', 'Legume tomate', 1.00, 'La pièce'),
+	(44, 'Tomate de luxe', 'Legume tomate', 1.00, 'La pièce'),
+	(45, 'Tomate de luxe', 'Legume tomate', 1.00, 'La pièce');
 
 -- Listage de la structure de table recettes. recette
 CREATE TABLE IF NOT EXISTS `recette` (
@@ -161,9 +166,9 @@ CREATE TABLE IF NOT EXISTS `recette` (
   PRIMARY KEY (`id_recette`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `FK_recette_categorie` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recettes.recette : ~7 rows (environ)
+-- Listage des données de la table recettes.recette : ~9 rows (environ)
 INSERT INTO `recette` (`id_recette`, `id_categorie`, `nom_recette`, `description`, `tempsPreparationMns`) VALUES
 	(1, 5, 'Tartare d\'avocat et saumon', 'Coupez les avocats en deux, retirez le noyau et détaillez la chair en dés. Arrosez avec 1 cuillère à soupe de jus de citron, salez, poivrez et mélangez.', 10),
 	(3, 6, 'Verrine à la confiture de lait de vache', 'Détendez la confiture de lait à la fourchette et incorporez délicatement les 2 tiers de la chantilly.', 10),
@@ -171,7 +176,9 @@ INSERT INTO `recette` (`id_recette`, `id_categorie`, `nom_recette`, `description
 	(5, 5, 'Pot au feu base viande', 'https://www.marmiton.org/recettes/recette_pot-au-feu_32792.aspx', 265),
 	(6, 4, 'Salade verte', 'Salade verte abev assaisonnemnt tout pret', 5),
 	(7, 5, 'Pâtes à la "carbonara" à la française', 'https://www.marmiton.org/recettes/recette_pates-a-la-carbonara_80453.aspx', 15),
-	(8, 5, 'Poulet basquaise', 'https://www.bing.com/images/search?view=detailv2&FORM=recidp&q=poulet+basquaise&imgurl=https://bing.com/th?id=OSK.80945104e0af80369a7afbb40a1ae320&idpbck=1&sim=4&pageurl=fbccd45125bff8433dea7cbff6ff129a&idpp=recipe&filters=recipequerylanguage:%22fr%22%20catesegtype:%22recipe%22%20cack:%22f50a7344-acf3-45bd-9700-0d60fd15f92f%22%20subsegment:%22recipe%22%20segment:%22generic.carousel%22%20secq:%22poulet%20basquaise%22%20supwlcar:%221%22%20tsource:%22EntitySegments%22%20ctype:%220%22%20eltypedim1:%22Recipe%22%20mltype:%220%22&selectedindex=0&ajaxhist=0&ajaxserp=0', 75);
+	(8, 5, 'Poulet basquaise', 'https://www.bing.com/images/search?view=detailv2&FORM=recidp&q=poulet+basquaise&imgurl=https://bing.com/th?id=OSK.80945104e0af80369a7afbb40a1ae320&idpbck=1&sim=4&pageurl=fbccd45125bff8433dea7cbff6ff129a&idpp=recipe&filters=recipequerylanguage:%22fr%22%20catesegtype:%22recipe%22%20cack:%22f50a7344-acf3-45bd-9700-0d60fd15f92f%22%20subsegment:%22recipe%22%20segment:%22generic.carousel%22%20secq:%22poulet%20basquaise%22%20supwlcar:%221%22%20tsource:%22EntitySegments%22%20ctype:%220%22%20eltypedim1:%22Recipe%22%20mltype:%220%22&selectedindex=0&ajaxhist=0&ajaxserp=0', 75),
+	(9, 7, 'Tasse eau chaude', 'Eau du robinet', 5),
+	(10, 7, 'Tasse eau chaude de luxe', 'Eau minerale en bouteille', 5);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
