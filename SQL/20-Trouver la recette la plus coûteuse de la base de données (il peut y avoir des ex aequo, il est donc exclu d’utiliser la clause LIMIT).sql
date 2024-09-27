@@ -1,8 +1,20 @@
-#Trouver la recette la plus coûteuse de la base de données (il peut y avoir des ex aequo, il est donc exclu d’utiliser la clause LIMIT)
+#Trouver ci-après la recette la plus coûteuse de la base de données (il peut y avoir des ex aequo, il est donc exclu d’utiliser la clause LIMIT)
 
+SELECT recette.nom_recette, SUM(ingredient.cout_ingredient * cuisiner.quantité) AS cout_total
+FROM recette
+JOIN cuisiner ON recette.id_recette = cuisiner.id_recette
+JOIN ingredient ON cuisiner.id_ingredient = ingredient.id_ingredient
+GROUP BY recette.nom_recette
+HAVING  cout_total >= ALL(
+    SELECT  SUM(ingredient.cout_ingredient * cuisiner.quantité) 
 
+FROM recette
+JOIN cuisiner ON recette.id_recette = cuisiner.id_recette
+JOIN ingredient ON cuisiner.id_ingredient = ingredient.id_ingredient
+GROUP BY recette.id_recette
+);
 
-
+#En dessous : morceaux de code comme sources et exemples :
 
 #Trouver ci-après temps minimal ex-aequo de preparation
 
