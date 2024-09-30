@@ -1,4 +1,4 @@
-#Nombre de personnages par lieu (trié par nombre de personnages décroissant).
+#Exo-2 Nombre de personnages par lieu (trié par nombre de personnages décroissant).
 
 SELECT id_lieu, COUNT(*) AS nombre_de_personnages
 FROM personnage
