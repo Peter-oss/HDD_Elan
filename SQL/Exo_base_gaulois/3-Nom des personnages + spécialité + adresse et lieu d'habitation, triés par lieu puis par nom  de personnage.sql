@@ -1,6 +1,8 @@
 #Nom des personnages + spécialité + adresse et lieu d'habitation, triés par lieu puis par nom de personnage
 
-SELECT NOM_personnage, NOM_SPECIALITE, NOM_LIEU
-FROM personnage v, specialite s, lieu l
-WHERE v.ID_SPECIALITE = s.ID_SPECIALITE
-AND l.ID_LIEU = v.ID_LIEU;
+SELECT DISTINCT nom_personnage, nom_specialite, nom_lieu
+FROM personnage
+JOIN specialite
+ON personnage.id_specialite = specialite.id_specialite
+JOIN lieu
+ON personnage.id_lieu = lieu.id_lieu;
