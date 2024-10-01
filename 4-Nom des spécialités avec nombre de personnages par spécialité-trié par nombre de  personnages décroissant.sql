@@ -1,0 +1,1 @@
+#Nom des spécialités avec nombre de personnages par spécialité (trié par nombre de personnages décroissant).
