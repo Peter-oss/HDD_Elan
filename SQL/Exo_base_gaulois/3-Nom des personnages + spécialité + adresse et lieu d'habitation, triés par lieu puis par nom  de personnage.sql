@@ -1,4 +1,4 @@
-#Nom des personnages + spécialité + adresse et lieu d'habitation, triés par lieu puis par nom de personnage
+#Exo-3 Nom des personnages + spécialité + adresse et lieu d'habitation, triés par lieu puis par nom de personnage
 
 SELECT DISTINCT nom_personnage, nom_specialite, nom_lieu
 FROM personnage
