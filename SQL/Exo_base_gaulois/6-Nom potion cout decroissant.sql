@@ -6,4 +6,4 @@ JOIN ingredient
 ON potion.id_potion = ingredient.id_ingredient
 JOIN composer
 ON ingredient.id_ingredient = composer.id_potion
-ORDER BY cout_ingredient DESC
+ORDER BY cout_ingredient DESC;
