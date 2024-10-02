@@ -8,5 +8,7 @@ AND pc.ID_BATAILLE = b.ID_BATAILLE
 AND b.NOM_BATAILLE = "Bataille du village gaulois"
 GROUP BY v.nom_personnage 
 ORDER BY nbCasques DESC
+LIMIT 1;
 
 #Premier jet.
+#Requete imbriquée
