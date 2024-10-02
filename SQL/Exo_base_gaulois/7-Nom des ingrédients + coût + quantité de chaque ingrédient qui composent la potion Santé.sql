@@ -1,4 +1,4 @@
-#Exo-7 Nom des ingrédients + coût + quantité de chaque ingrédient qui composent la potion Santé.
+#Exo-7 Nom des ingrédients + coût + quantité de chaque ingrédient qui composent la potion Santé. id_potion=3
 
 /*
 #Source : exercice recettes
@@ -20,5 +20,15 @@ WHERE
     recette.nom_recette = 'Pâtes à la "carbonara" à la française';
 */
 
-
+SELECT 
+nom_potion, 
+cout_ingredient AS cout_igredient,
+nom_ingredient AS nb_ingredient,
+qte
+FROM potion
+INNER JOIN composer
+ON composer.id_potion = potion.id_potion
+INNER JOIN ingredient
+ON composer.id_ingredient = ingredient.id_ingredient
+WHERE potion.id_potion = 3;
 
