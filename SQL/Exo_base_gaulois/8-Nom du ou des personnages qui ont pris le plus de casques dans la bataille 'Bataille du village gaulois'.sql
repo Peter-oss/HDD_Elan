@@ -12,3 +12,4 @@ LIMIT 1;
 
 #Premier jet.
 #Requete imbriquée
+#Celui qui a récupéré le plus de casques : LIMIT 1; celui qui en a le plus.
