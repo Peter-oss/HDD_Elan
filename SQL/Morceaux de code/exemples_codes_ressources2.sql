@@ -43,7 +43,6 @@ ORDER BY cout_ingredient DESC
 [6]Nom des ingrédients + coût + quantité
 de chaque ingrédient qui composent la potion 'Miel'
 SELECT 
-SELECT 
 nom_potion, 
 cout_ingredient AS cout_igredient,
 nom_ingredient AS nb_ingredient,
